@@ -1,0 +1,2459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.1">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath">C:\Users\ramad10\Downloads\postgresql-42.2.23.jar</stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="article_type_MAREKT_HALL" elementType="Argument">
+            <stringProp name="Argument.name">article_type_MAREKT_HALL</stringProp>
+            <stringProp name="Argument.value">0</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="article_type_SELF_SERVE" elementType="Argument">
+            <stringProp name="Argument.name">article_type_SELF_SERVE</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="article_type_FULL_SERVE_INTERNAL" elementType="Argument">
+            <stringProp name="Argument.name">article_type_FULL_SERVE_INTERNAL</stringProp>
+            <stringProp name="Argument.value">2</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="article_type_FULL_SERVE_EXTERNAL" elementType="Argument">
+            <stringProp name="Argument.name">article_type_FULL_SERVE_EXTERNAL</stringProp>
+            <stringProp name="Argument.value">3</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="article_type_UNSPECIFIED" elementType="Argument">
+            <stringProp name="Argument.name">article_type_UNSPECIFIED</stringProp>
+            <stringProp name="Argument.value">99</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="bucode" elementType="Argument">
+            <stringProp name="Argument.name">bucode</stringProp>
+            <stringProp name="Argument.value">929</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="db_servername" elementType="Argument">
+            <stringProp name="Argument.name">db_servername</stringProp>
+            <stringProp name="Argument.value">ppseelm-lx42272.ikeadt.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">929: ppseelm-lx42272.ikeadt.com; 836: ppseelm-lx21629.ikeadt.com</stringProp>
+          </elementProp>
+          <elementProp name="orderCount" elementType="Argument">
+            <stringProp name="Argument.name">orderCount</stringProp>
+            <stringProp name="Argument.value">95</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration ${bucode}" enabled="true">
+        <stringProp name="dataSource">ppmhspg_${bucode}</stringProp>
+        <stringProp name="poolMax">0</stringProp>
+        <stringProp name="timeout">10000</stringProp>
+        <stringProp name="trimInterval">60000</stringProp>
+        <boolProp name="autocommit">true</boolProp>
+        <stringProp name="transactionIsolation">DEFAULT</stringProp>
+        <boolProp name="preinit">true</boolProp>
+        <stringProp name="initQuery"></stringProp>
+        <boolProp name="keepAlive">true</boolProp>
+        <stringProp name="connectionAge">5000</stringProp>
+        <stringProp name="checkQuery">select 1</stringProp>
+        <stringProp name="dbUrl">jdbc:postgresql://${db_servername}:5432/ppmhspg_${bucode}</stringProp>
+        <stringProp name="driver">org.postgresql.Driver</stringProp>
+        <stringProp name="username">pgmhs</stringProp>
+        <stringProp name="password">7c5d3B9tFXS7891p7UrRIMB1cn2i50</stringProp>
+        <stringProp name="connectionProperties"></stringProp>
+      </JDBCDataSource>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CPS_PutNewReceiverReference" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${orderCount}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="PostgreSQL Queries" enabled="true"/>
+        <hashTree>
+          <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller" enabled="true"/>
+          <hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Postgres_Request1" enabled="true">
+              <stringProp name="dataSource">ppmhspg_${bucode}</stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="query">select greatest(max(so.order_id), max(cast(sco.customer_reference as integer))) from iwardb_${bucode}.sgf_cps_order sco, iwardb_${bucode}.store_order so;
+</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="variableNames"></stringProp>
+              <stringProp name="resultVariable"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultSetHandler">Count Records</stringProp>
+            </JDBCSampler>
+            <hashTree>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Reciever reference" enabled="true">
+                <stringProp name="TestPlan.comments">1218948378</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">C_Reference</stringProp>
+                <stringProp name="RegexExtractor.regex">([0-9]+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">0</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+            </hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Postgres_Request2" enabled="true">
+              <stringProp name="dataSource">ppmhspg_${bucode}</stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="query">select max(cast(customer_reference as integer)) from iwardb_${bucode}.SGF_CPS_ORDER_HIST;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="variableNames"></stringProp>
+              <stringProp name="resultVariable"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+            </JDBCSampler>
+            <hashTree>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Reciever reference" enabled="true">
+                <stringProp name="TestPlan.comments">1218948378</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">C_Reference_Hist</stringProp>
+                <stringProp name="RegexExtractor.regex">([0-9]+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">0</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">long number = Long.parseLong(vars.get(&quot;C_Reference&quot;));
+long increment = Long.parseLong(vars.get(&quot;__jm__CPS_PutNewReceiverReference__idx&quot;));
+long number_hist = Long.parseLong(vars.get(&quot;C_Reference_Hist&quot;));  
+if (number &gt;= number_hist){
+	number = number + increment + 1;
+	vars.put(&quot;C_Reference_Incremented&quot;, String.valueOf(number));
+} else {
+	number_hist = number_hist + increment;
+	vars.put(&quot;C_Reference_Incremented&quot;, String.valueOf(number_hist));
+}
+</stringProp>
+        </JSR223Sampler>
+        <hashTree>
+          <kg.apc.jmeter.modifiers.FifoPutPostProcessor guiclass="kg.apc.jmeter.modifiers.FifoPutPostProcessorGui" testclass="kg.apc.jmeter.modifiers.FifoPutPostProcessor" testname="jp@gc - Inter-Thread Communication PostProcessor" enabled="true">
+            <stringProp name="Value">${C_Reference_Incremented}</stringProp>
+            <stringProp name="FifoName">ReferenceID</stringProp>
+          </kg.apc.jmeter.modifiers.FifoPutPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CPS_GetNewReceiverReference" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">19</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">3600</stringProp>
+        <stringProp name="ThreadGroup.delay">5</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="PostgreSQL Queries" enabled="true"/>
+        <hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Postgres_Request1" enabled="false">
+            <stringProp name="dataSource">ppmhspg_${bucode}</stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="query">select greatest(max(so.order_id), max(cast(sco.customer_reference as integer))) from iwardb_${bucode}.sgf_cps_order sco, iwardb_${bucode}.store_order so;
+</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Count Records</stringProp>
+          </JDBCSampler>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Reciever reference" enabled="true">
+              <stringProp name="TestPlan.comments">1218948378</stringProp>
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">C_Reference</stringProp>
+              <stringProp name="RegexExtractor.regex">([0-9]+)</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">notfound_C_SessionID</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Postgres_Request2" enabled="false">
+            <stringProp name="dataSource">ppmhspg_${bucode}</stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="query">select max(cast(customer_reference as integer)) from iwardb_${bucode}.SGF_CPS_ORDER_HIST;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Reciever reference" enabled="true">
+              <stringProp name="TestPlan.comments">1218948378</stringProp>
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">C_Reference_Hist</stringProp>
+              <stringProp name="RegexExtractor.regex">([0-9]+)</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">notfound_C_SessionID</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Postgres_Request3" enabled="true">
+            <stringProp name="dataSource">ppmhspg_${bucode}</stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="query">select distinct(c.art), bulk, (phst+intt-resq-resx+reci-deli-unsd-uscd-resc) as stock, eds.eds as enddate, unit from iwardb_${bucode}.iwaaa a,iwardb_${bucode}.iwaac c left join iwardb_${bucode}.end_date_sale eds on c.art=eds.art inner join iwardb_${bucode}.slm_art_loc_wk slm on c.art=slm.art where a.art not like &apos;_00000__&apos; and a.art=c.art and (phst+intt-resq-resx+reci-deli-unsd-uscd-resc) &gt; 0 and c.arss &lt;&gt; &apos;1&apos; and c.aros &lt;&gt; &apos;1&apos; and c.arqss = &apos;0&apos;  and bulk = &apos;2&apos; and item_type = &apos;ART&apos; and unit = &apos;0&apos;;
+</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Count Records</stringProp>
+          </JDBCSampler>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Artictles" enabled="true">
+              <stringProp name="TestPlan.comments">Regex for extracting articles ids</stringProp>
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">article</stringProp>
+              <stringProp name="RegexExtractor.regex">\n([0-9]{8,})\s\d\s(\d{1,})</stringProp>
+              <stringProp name="RegexExtractor.template">$1$$2$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">-1</stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">true</boolProp>
+            </RegexExtractor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Total Stock Value" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">amount_of_articles_from_DB = int(vars.get(&apos;article_matchNr&apos;))
+total_stock_value = 0
+
+for i in xrange(1, amount_of_articles_from_DB + 1):
+	total_stock_value += long(vars.get(&apos;article_&apos; + str(i) + &apos;_g2&apos;))
+
+vars.put(&apos;TOTAL_STCK&apos;, str(total_stock_value))</stringProp>
+              <stringProp name="scriptLanguage">python</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Postgres_Request4" enabled="false">
+            <stringProp name="dataSource">ppmhspg_929</stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="query">select art, slid, loc_type, manual_pick, div_id from iwardb_929.v_slm_art_loc_div where (manual_pick=&apos;1&apos; or loc_type in (&apos;1&apos;,&apos;3&apos;)) and art=&apos;00253238&apos;;
+</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Count Records</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Postgres_Request5" enabled="false">
+            <stringProp name="dataSource">ppmhspg_929</stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="query">select art, slid, loc_type, manual_pick, div_id from iwardb_929.v_slm_art_loc_div where (manual_pick=&apos;1&apos; or loc_type in (&apos;1&apos;,&apos;3&apos;)) and art=&apos;00205493&apos;;
+</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Count Records</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Postgres_Request6" enabled="false">
+            <stringProp name="dataSource">ppmhspg_929</stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="query">select art, slid, loc_type, manual_pick, div_id from iwardb_929.v_slm_art_loc_div where (manual_pick=&apos;1&apos; or loc_type in (&apos;1&apos;,&apos;3&apos;)) and art=&apos;00382344&apos;;
+</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Count Records</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CPS_ISOM_Order_Creation" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:SOAP-ENC=&quot;http://www.w3.org/2003/05/soap-encoding&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:ns=&quot;http://www.ikea.com/mhs/cps/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns:CreateCpsOrder&gt;&lt;CreateCpsOrderRequest&gt;&lt;FulfillmentUnit&gt;&lt;BUType&gt;STO&lt;/BUType&gt;&lt;BUCode&gt;${bucode}&lt;/BUCode&gt;&lt;/FulfillmentUnit&gt;&lt;PickOrder&gt;&lt;Requester&gt;&lt;OrderSource&gt;ISOM&lt;/OrderSource&gt;&lt;OrderReference&gt;${Order_Reference}&lt;/OrderReference&gt;&lt;/Requester&gt;&lt;Receiver&gt;&lt;DestinationType&gt;TSP&lt;/DestinationType&gt;&lt;DestinationCode&gt;55556&lt;/DestinationCode&gt;&lt;ReceiverReference&gt;${C_Reference_Incremented}&lt;/ReceiverReference&gt;&lt;/Receiver&gt;&lt;OrderMethod&gt;WEB&lt;/OrderMethod&gt;&lt;Service&gt;&lt;ServiceItemNo&gt;30000536&lt;/ServiceItemNo&gt;&lt;ServiceName&gt;LCD ZONE A&lt;/ServiceName&gt;&lt;ServiceProviderName&gt;DHL&lt;/ServiceProviderName&gt;&lt;ServiceProviderReference&gt;${Service_Reference}&lt;/ServiceProviderReference&gt;&lt;TransportMethod&gt;TRUCK&lt;/TransportMethod&gt;&lt;IsPartialShipmentAllowed&gt;true&lt;/IsPartialShipmentAllowed&gt;&lt;ServiceTimeFrom&gt;${timeFrom}&lt;/ServiceTimeFrom&gt;&lt;ServiceTimeTo&gt;${timeTo}&lt;/ServiceTimeTo&gt;&lt;/Service&gt;&lt;SupportReference&gt;&lt;/SupportReference&gt;&lt;CutOffTime&gt;${cutOffTime}&lt;/CutOffTime&gt;${Articles}&lt;/PickOrder&gt;&lt;/CreateCpsOrderRequest&gt;&lt;/ns:CreateCpsOrder&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">mhs${bucode}.ikeadt.com</stringProp>
+          <stringProp name="HTTPSampler.port">80</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/cps</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments">Creating ISOM order with NO encoding function</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">content-type</stringProp>
+                <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">cache-control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+            <collectionProp name="CookieManager.cookies">
+              <elementProp name="sessionid" elementType="Cookie" testname="sessionid">
+                <stringProp name="Cookie.value">${C_SessionID_v2}</stringProp>
+                <stringProp name="Cookie.domain">MHS${bucode}.IKEADT.COM</stringProp>
+                <stringProp name="Cookie.path">/cps</stringProp>
+                <boolProp name="Cookie.secure">false</boolProp>
+                <longProp name="Cookie.expires">0</longProp>
+                <boolProp name="Cookie.path_specified">true</boolProp>
+                <boolProp name="Cookie.domain_specified">true</boolProp>
+              </elementProp>
+              <elementProp name="sessionuser" elementType="Cookie" testname="sessionuser">
+                <stringProp name="Cookie.value">HELP</stringProp>
+                <stringProp name="Cookie.domain">MHS${bucode}.IKEADT.COM</stringProp>
+                <stringProp name="Cookie.path">/cps</stringProp>
+                <boolProp name="Cookie.secure">false</boolProp>
+                <longProp name="Cookie.expires">0</longProp>
+                <boolProp name="Cookie.path_specified">true</boolProp>
+                <boolProp name="Cookie.domain_specified">true</boolProp>
+              </elementProp>
+            </collectionProp>
+            <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+            <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+          </CookieManager>
+          <hashTree/>
+          <kg.apc.jmeter.modifiers.FifoPopPreProcessor guiclass="kg.apc.jmeter.modifiers.FifoPopPreProcessorGui" testclass="kg.apc.jmeter.modifiers.FifoPopPreProcessor" testname="jp@gc - Inter-Thread Communication PreProcessor" enabled="true">
+            <stringProp name="Timeout">30</stringProp>
+            <stringProp name="Variable">C_Reference_Incremented</stringProp>
+            <stringProp name="FifoName">ReferenceID</stringProp>
+          </kg.apc.jmeter.modifiers.FifoPopPreProcessor>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Order Reference Creation" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">String order_ref_base= &quot;order_ref_test_&quot;
+
+Date date = new Date()
+String date_part = date.format(&quot;yymmdd_&quot;)
+String time_part = date.format(&quot;HHmmss&quot;)
+
+Random random_obj = new Random()
+String randInt = String.valueOf(random_obj.nextInt(99))
+
+vars.put(&quot;Order_Reference&quot;, String.valueOf(order_ref_base + date_part + time_part + randInt));</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Timestamps Formatting" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">vars.put(&quot;timeFrom&quot;, &apos;${__timeShift(yyyy-MM-dd&apos;T&apos;HH:mm:ss&apos;Z&apos;,,P2D,,)}&apos;)
+vars.put(&quot;timeTo&quot;, &apos;${__timeShift(yyyy-MM-dd&apos;T&apos;HH:mm:ss&apos;Z&apos;,,P3D,,)}&apos;)
+vars.put(&quot;cutOffTime&quot;, &apos;${__timeShift(yyyy-MM-dd&apos;T&apos;HH:mm:ss&apos;+01:00&apos;,,P1D,,)}&apos;)</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Service Provider Reference Creation" enabled="true">
+            <stringProp name="scriptLanguage">javascript</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">vars.put(&quot;Service_Reference&quot;, &quot;${__time()}&quot;.substring(4,12))
+</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Comparison and Incrementation 836" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">long number = Long.parseLong(vars.get(&quot;C_Reference&quot;));
+long increment = Long.parseLong(vars.get(&quot;counter&quot;));
+number = number + increment;
+vars.put(&quot;C_Reference_Incremented&quot;, String.valueOf(number));</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Building XML body" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">vars.put(&quot;XMLBody&quot;,&apos;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:SOAP-ENC=&quot;http://www.w3.org/2003/05/soap-encoding&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:ns=&quot;http://www.ikea.com/mhs/cps/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns:CreateCpsOrder&gt;&lt;CreateCpsOrderRequest&gt;&lt;FulfillmentUnit&gt;&lt;BUType&gt;STO&lt;/BUType&gt;&lt;BUCode&gt;${bucode}&lt;/BUCode&gt;&lt;/FulfillmentUnit&gt;&lt;PickOrder&gt;&lt;Requester&gt;&lt;OrderSource&gt;ISOM&lt;/OrderSource&gt;&lt;OrderReference&gt;${Order_Reference}&lt;/OrderReference&gt;&lt;/Requester&gt;&lt;Receiver&gt;&lt;DestinationType&gt;TSP&lt;/DestinationType&gt;&lt;DestinationCode&gt;55556&lt;/DestinationCode&gt;&lt;ReceiverReference&gt;${C_Reference_Incremented}&lt;/ReceiverReference&gt;&lt;/Receiver&gt;&lt;OrderMethod&gt;WEB&lt;/OrderMethod&gt;&lt;Service&gt;&lt;ServiceItemNo&gt;30000536&lt;/ServiceItemNo&gt;&lt;ServiceName&gt;LCD ZONE A&lt;/ServiceName&gt;&lt;ServiceProviderName&gt;DHL&lt;/ServiceProviderName&gt;&lt;ServiceProviderReference&gt;${Service_Reference}&lt;/ServiceProviderReference&gt;&lt;TransportMethod&gt;TRUCK&lt;/TransportMethod&gt;&lt;IsPartialShipmentAllowed&gt;true&lt;/IsPartialShipmentAllowed&gt;&lt;ServiceTimeFrom&gt;${timeFrom}&lt;/ServiceTimeFrom&gt;&lt;ServiceTimeTo&gt;${timeTo}&lt;/ServiceTimeTo&gt;&lt;/Service&gt;&lt;SupportReference&gt;&lt;/SupportReference&gt;&lt;CutOffTime&gt;${cutOffTime}&lt;/CutOffTime&gt;${Articles}&lt;/PickOrder&gt;&lt;/CreateCpsOrderRequest&gt;&lt;/ns:CreateCpsOrder&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;&apos;);</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Article Choice python" enabled="true">
+            <stringProp name="scriptLanguage">python</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import random
+
+
+class Article:
+    &quot;&quot;&quot;Distribution cases:
+    # percentile    # of articles   total # of items (target)
+    1. 1-36     ---&gt;        1                3
+    2. 36-51    ---&gt;        2                7
+    3. 51-76    ---&gt;       3-7               9
+    4. 76-86    ---&gt;       7-11              18
+    5. 86-96    ---&gt;       11-21             32
+    6. 96-101   ---&gt;       21-76             80 &quot;&quot;&quot;
+
+    # distribution = {case: target}
+    distribution = {1: 3, 2: 7, 3: 9, 4: 18, 5: 32, 6: 80}
+
+    def __init__(self, ID, stock_value, qty):
+        self.id = ID
+        self.stock_value = int(stock_value)
+        self.quantity = self.set_quantity(qty)
+
+    def set_quantity(self, qty):
+        if qty &gt; self.stock_value:
+            if self.stock_value == 0:
+                return 0
+            else:
+                return self.stock_value
+        else:
+            return qty
+
+    @staticmethod
+    def pick_distribution_case():
+        number = random.randint(1, 101)
+        if 1 &lt;= number &lt; 36:
+            return 1
+        elif 36 &lt;= number &lt; 51:
+            return 2
+        elif 51 &lt;= number &lt; 76:
+            return 3
+        elif 76 &lt;= number &lt; 86:
+            return 4
+        elif 86 &lt;= number &lt; 96:
+            return 5
+        elif 96 &lt;= number &lt; 101:
+            return 6
+        else:
+            raise ValueError(&quot;Percentile out of range &lt;1, 100&gt;&quot;)
+
+    @staticmethod
+    def pick_number_of_articles(case):
+        if case == 1:
+            return 1
+        elif case == 2:
+            return 2
+        elif case == 3:
+            return random.randint(3, 7)
+        elif case == 4:
+            return random.randint(7, 11)
+        elif case == 5:
+            return random.randint(11, 21)
+        elif case == 6:
+            return random.randint(21, 76)
+        else:
+            raise ValueError(&quot;Not implemented. Case: {}&quot;.format(case))
+
+    @classmethod
+    def distribute_items_among_articles(cls, case, num_of_art):
+
+        if case == 1:
+            return [3]
+        elif case == 2:
+            return [3, 4]
+        elif case in [3, 4, 5, 6]:
+            dist_case_target = cls.distribution[case]
+            number_of_items_per_article = dist_case_target / num_of_art
+            articles = [number_of_items_per_article for _ in xrange(num_of_art)]
+            the_rest_of_articles = dist_case_target % num_of_art
+            for i in xrange(the_rest_of_articles):
+                articles[i] += 1
+
+            return articles
+        else:
+            raise ValueError(&quot;Not implemented. Case: {}&quot;.format(case))
+
+
+amount_of_articles_from_DB = int(vars.get(&apos;article_matchNr&apos;))
+distribution_case = Article.pick_distribution_case()
+number_of_articles = Article.pick_number_of_articles(distribution_case)
+chosen_articles = list()
+
+for quantity in Article.distribute_items_among_articles(distribution_case, number_of_articles):
+    article_id = str(random.randint(1, amount_of_articles_from_DB + 1))
+    chosen_articles.append(Article(article_id, vars.get(&quot;article_&quot; + article_id + &quot;_g2&quot;), quantity))
+
+for idx, article in enumerate(chosen_articles):
+    if article.quantity == 0:
+        del chosen_articles[idx]
+
+xml_articles_start = &quot;&lt;ItemLine&gt;&lt;Item&gt;&lt;ItemType&gt;ART&lt;/ItemType&gt;&lt;ItemNo&gt;&quot;
+xml_articles_middle = &quot;&lt;/ItemNo&gt;&lt;ItemUnitOfMeasure&gt;PIECES&lt;/ItemUnitOfMeasure&gt;&lt;/Item&gt;&lt;Quantity&gt;&quot;
+xml_articles_end = &quot;&lt;/Quantity&gt;&lt;ItemHasTransport&gt;true&lt;/ItemHasTransport&gt;&lt;ItemHasPicking&gt;true&lt;/ItemHasPicking&gt;&lt;/ItemLine&gt;&quot;
+xml_articles_body = &apos;&apos;
+
+for idx, article in enumerate(chosen_articles):
+    article.stock_value -= article.quantity
+    vars.put(&apos;article_&apos; + article.id + &quot;_g2&quot;, str(article.stock_value))
+    article_name = vars.get(&apos;article_&apos; + article.id + &apos;_g1&apos;)
+    xml_articles_body += xml_articles_start + article_name + xml_articles_middle + str(article.quantity) + xml_articles_end
+
+vars.put(&quot;Articles&quot;, xml_articles_body)
+
+articles_ids = list()
+articles_qty = list()
+for article in chosen_articles:
+	articles_ids.append(vars.get(&quot;article_&quot; + article.id + &quot;_g1&quot;))
+	articles_qty.append(str(article.quantity))
+
+vars.put(&quot;Articles_SSV&quot;, &quot;;&quot;.join(articles_ids))
+vars.put(&quot;Articles_QTY&quot;, &quot;;&quot;.join(articles_qty))
+</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Verification of CPS order creation" enabled="true">
+          <stringProp name="dataSource">ppmhspg_${bucode}</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="query">select order_id from iwardb_${bucode}.sgf_cps_order where customer_reference=&apos;${C_Reference_Incremented}&apos;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">C_OrderID</stringProp>
+            <stringProp name="RegexExtractor.regex">([0-9]+)</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">notfound_C_OrderID</stringProp>
+            <stringProp name="RegexExtractor.match_number">-1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Saving Variables to File" enabled="true">
+            <stringProp name="scriptLanguage">python</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">orderCount = int(vars.get(&quot;C_OrderID_matchNr&quot;))
+if orderCount == 1:
+	import csv
+	
+	articles = vars.get(&quot;Articles_SSV&quot;)
+	quantities = vars.get(&quot;Articles_QTY&quot;)
+	orderId = vars.get(&quot;C_OrderID_1&quot;)
+	
+#	with open(&quot;../orders.csv&quot;, &apos;ab&apos;) as csv_file:
+#		csv_writer = csv.writer(csv_file, delimiter=&apos;,&apos;, quotechar=&quot;&apos;&quot;)
+#		csv_writer.writerow([vars.get(&quot;C_Reference_Incremented&quot;), orderId, articles, quantities])
+	vars.put(&quot;orderCreated&quot;, vars.get(&quot;C_Reference_Incremented&quot;) + &quot;,&quot; + orderId + &quot;,&quot; + articles + &quot;,&quot; + quantities)
+</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <kg.apc.jmeter.modifiers.FifoPutPostProcessor guiclass="kg.apc.jmeter.modifiers.FifoPutPostProcessorGui" testclass="kg.apc.jmeter.modifiers.FifoPutPostProcessor" testname="jp@gc - Inter-Thread Communication PostProcessor" enabled="true">
+            <stringProp name="Value">${orderCreated}</stringProp>
+            <stringProp name="FifoName">Orders</stringProp>
+          </kg.apc.jmeter.modifiers.FifoPutPostProcessor>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="EndThread" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">vars.put(&quot;fifoSize&quot;, &quot;&quot;+${__fifoSize(ReferenceID)});
+if (${__fifoSize(ReferenceID)}==0) {
+	prev.setStopThread(true); // for Beanshell Post Processor
+}
+</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CPS_WriteOrdersToFile" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${orderCount}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
+          <stringProp name="scriptLanguage">python</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">with open(&quot;../orders.txt&quot;, &apos;ab&apos;) as txt_file:
+	txt_file.write(vars.get(&quot;orderLine&quot;) + &quot;\n&quot;)
+</stringProp>
+        </JSR223Sampler>
+        <hashTree>
+          <kg.apc.jmeter.modifiers.FifoPopPreProcessor guiclass="kg.apc.jmeter.modifiers.FifoPopPreProcessorGui" testclass="kg.apc.jmeter.modifiers.FifoPopPreProcessor" testname="jp@gc - Inter-Thread Communication PreProcessor" enabled="true">
+            <stringProp name="Timeout">30</stringProp>
+            <stringProp name="Variable">orderLine</stringProp>
+            <stringProp name="FifoName">Orders</stringProp>
+          </kg.apc.jmeter.modifiers.FifoPopPreProcessor>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup guiclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroupGui" testclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup" testname="Picking Process" enabled="true">
+        <elementProp name="ThreadGroup.main_controller" elementType="com.blazemeter.jmeter.control.VirtualUserController"/>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <stringProp name="TargetLevel">50</stringProp>
+        <stringProp name="RampUp">100</stringProp>
+        <stringProp name="Steps">10</stringProp>
+        <stringProp name="Hold">600</stringProp>
+        <stringProp name="LogFilename"></stringProp>
+        <stringProp name="Iterations"></stringProp>
+        <stringProp name="Unit">S</stringProp>
+      </com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Getting Reference ID and Article IDs" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">C:\Users\masey6\Downloads\apache-jmeter-5.4.1\orders.csv</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">ReferenceID,OrderID,ArticlesID,Quantities</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Getting User IDs" enabled="true">
+          <stringProp name="filename">C:\Users\masey6\Downloads\apache-jmeter-5.4.1\UserID_OrderCreation.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">UserID</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Extracting Article IDs and Quantities" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">articles_id = vars.get(&apos;ArticlesID&apos;).split(&apos;;&apos;)
+quantities = vars.get(&apos;Quantities&apos;).split(&apos;;&apos;)
+
+vars.put(&apos;ARTICLES_AMOUNT&apos;, str(len(articles_id)))
+
+for idx, article_id in enumerate(articles_id):
+	vars.put(&apos;ArticleID_&apos; + str(idx), article_id)
+
+for idx, qty in enumerate(quantities):
+	vars.put(&apos;ArticleID_&apos; + str(idx) + &apos;_QTY&apos;, qty)</stringProp>
+          <stringProp name="scriptLanguage">python</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Calculating Think Time" enabled="true">
+          <stringProp name="scriptLanguage">python</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import random
+
+vars.put(&apos;THINK_TIME&apos;, str(random.randint(7000, 13001)))</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="00_000_${ARTICLES_AMOUNT}_ARTICLES_PER_ORDER" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="00_010_CPS_LOGIN" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CPS_Login_v1" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">bsxml=${__urlencode(&lt;VoCgiBrokerIn&gt;&#xd;
+	&lt;BS&gt;BsLoginUser&lt;/BS&gt;&#xd;
+	&lt;EBC&gt;EBCJSGFADM01&lt;/EBC&gt;&#xd;
+	&lt;XSLTtransform&gt;SERVER&lt;/XSLTtransform&gt;&#xd;
+	&lt;XMLSize&gt;300000&lt;/XMLSize&gt;&#xd;
+	&lt;EbcTimeout&gt;1000&lt;/EbcTimeout&gt;&#xd;
+	&lt;Mode&gt;MEMORY&lt;/Mode&gt;&#xd;
+&lt;/VoCgiBrokerIn&gt;&#xd;
+&lt;VoLoginUserIn&gt;&#xd;
+	&lt;UserId&gt;${UserID}&lt;/UserId&gt;&#xd;
+	&lt;UserPassword&gt;3406&lt;/UserPassword&gt;&#xd;
+	&lt;LangCode&gt;EN&lt;/LangCode&gt;&#xd;
+	&lt;ScreenWidth&gt;1257&lt;/ScreenWidth&gt;&#xd;
+	&lt;ScreenHeight&gt;1049&lt;/ScreenHeight&gt;&#xd;
+	&lt;Application&gt;UNI&lt;/Application&gt;&#xd;
+&lt;/VoLoginUserIn&gt;&#xd;
+&lt;Logicals&gt;&#xd;
+	&lt;UseNewS11&gt;1&lt;/UseNewS11&gt;&#xd;
+&lt;/Logicals&gt;&#xd;
+&lt;VoCgiProcessId&gt;&#xd;
+	&lt;ProcessId&gt;${__time()}_172&lt;/ProcessId&gt;&#xd;
+&lt;/VoCgiProcessId&gt;)}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">mhs${bucode}.ikeadt.com</stringProp>
+              <stringProp name="HTTPSampler.port">80</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/fcgi_default</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="TestPlan.comments">Returns longer version of session ID (Broker)</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">cache-control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="TestPlan.comments">document.cookie = &quot;sessionid=&quot; + &quot;HELP_210820_0727372_277&quot;</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">C_SessionID</stringProp>
+                <stringProp name="RegexExtractor.regex">document.cookie = &quot;sessionid=&quot; . &quot;(.*?)&quot;</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">notfound_C_SessionID</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CPS_Login_v2" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">bsxml=${__urlencode(&lt;VoCgiBrokerIn&gt;&#xd;
+	&lt;BS&gt;BsLoginUser&lt;/BS&gt;&#xd;
+	&lt;EBC&gt;EBCJSGFADM01&lt;/EBC&gt;&#xd;
+	&lt;XSLTtransform&gt;SERVER&lt;/XSLTtransform&gt;&#xd;
+	&lt;XMLSize&gt;300000&lt;/XMLSize&gt;&#xd;
+	&lt;EbcTimeout&gt;1000&lt;/EbcTimeout&gt;&#xd;
+	&lt;Mode&gt;MEMORY&lt;/Mode&gt;&#xd;
+&lt;/VoCgiBrokerIn&gt;&#xd;
+&lt;VoLoginUserIn&gt;&#xd;
+	&lt;UserId&gt;HELP&lt;/UserId&gt;&#xd;
+	&lt;UserPassword&gt;3406&lt;/UserPassword&gt;&#xd;
+	&lt;LangCode&gt;--&lt;/LangCode&gt;&#xd;
+	&lt;ScreenWidth&gt;1522&lt;/ScreenWidth&gt;&#xd;
+	&lt;ScreenHeight&gt;1598&lt;/ScreenHeight&gt;&#xd;
+	&lt;Application&gt;UNI&lt;/Application&gt;&#xd;
+&lt;/VoLoginUserIn&gt;)}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">mhs${bucode}.ikeadt.com</stringProp>
+              <stringProp name="HTTPSampler.port">80</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/fcgi_default</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="TestPlan.comments">Returns shorter version of session ID (Server Info)</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">cache-control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="false">
+                <stringProp name="TestPlan.comments">document.cookie = &quot;sessionid=&quot; + &quot;HELP_210820_0727372_277&quot;</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">C_SessionID</stringProp>
+                <stringProp name="RegexExtractor.regex">document.cookie = &quot;sessionid=&quot; . &quot;(.*?)&quot;</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">notfound_C_SessionID</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BoundaryExtractor guiclass="BoundaryExtractorGui" testclass="BoundaryExtractor" testname="Boundary Extractor" enabled="true">
+                <stringProp name="BoundaryExtractor.useHeaders">false</stringProp>
+                <stringProp name="BoundaryExtractor.refname">C_SessionID_v2</stringProp>
+                <stringProp name="BoundaryExtractor.lboundary">document.cookie = &quot;sessionid=&quot; + &quot;</stringProp>
+                <stringProp name="BoundaryExtractor.rboundary">&quot; + &quot;; &quot; + expirationTime;</stringProp>
+                <stringProp name="BoundaryExtractor.default"></stringProp>
+                <boolProp name="BoundaryExtractor.default_empty_value">false</boolProp>
+                <stringProp name="BoundaryExtractor.match_number">1</stringProp>
+              </BoundaryExtractor>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration"></stringProp>
+          </TestAction>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">7000</stringProp>
+              <stringProp name="RandomTimer.range">6000</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="00_020_BsGetCPSOrdersPaged_1stCall" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">&lt;VoCgiBrokerIn&gt;&#xd;
+	&lt;ScreenId&gt;O23&lt;/ScreenId&gt;&#xd;
+	&lt;VoSession&gt;&#xd;
+		&lt;SessionId&gt;${C_SessionID}&lt;/SessionId&gt;&#xd;
+		&lt;SessionUser&gt;${UserID}&lt;/SessionUser&gt;&#xd;
+		&lt;LanguageCode&gt;GB&lt;/LanguageCode&gt;&#xd;
+		&lt;VoFunctionAccessList&gt;&#xd;
+			&lt;VoFunctionAccess&gt;&#xd;
+				&lt;FunctionCode&gt;O23&lt;/FunctionCode&gt;&#xd;
+				&lt;Update&gt;Y&lt;/Update&gt;&#xd;
+				&lt;Store&gt;Y&lt;/Store&gt;&#xd;
+				&lt;Delete&gt;Y&lt;/Delete&gt;&#xd;
+				&lt;Read&gt;Y&lt;/Read&gt;&#xd;
+			&lt;/VoFunctionAccess&gt;&#xd;
+		&lt;/VoFunctionAccessList&gt;&#xd;
+	&lt;/VoSession&gt;&#xd;
+	&lt;BS&gt;BsGetCPSOrdersPaged&lt;/BS&gt;&#xd;
+	&lt;EBC&gt;EBCJSGFCPS04&lt;/EBC&gt;&#xd;
+	&lt;XMLSize&gt;300000&lt;/XMLSize&gt;&#xd;
+	&lt;EbcTimeout&gt;1000&lt;/EbcTimeout&gt;&#xd;
+	&lt;XSLTtransform&gt;CLIENT&lt;/XSLTtransform&gt;&#xd;
+	&lt;Mode&gt;MEMORY&lt;/Mode&gt;&#xd;
+	&lt;EBCPAYLOAD&gt;&#xd;
+		&lt;DATA&gt;&#xd;
+			&lt;VoNavigation&gt;&#xd;
+				&lt;OutputScreen&gt;o2CpsHandOrderList&lt;/OutputScreen&gt;&#xd;
+				&lt;InputScreen&gt;o2CpsHandMain&lt;/InputScreen&gt;&#xd;
+				&lt;InfoText/&gt;&#xd;
+				&lt;UserId&gt;${UserID}&lt;/UserId&gt;&#xd;
+				&lt;LangCode&gt;GB&lt;/LangCode&gt;&#xd;
+				&lt;InfoSignal/&gt;&#xd;
+			&lt;/VoNavigation&gt;&#xd;
+			&lt;VoPagedOrderRequest&gt;&#xd;
+				&lt;SearchType&gt;Q&lt;/SearchType&gt;&#xd;
+				&lt;OrderId&gt;-1&lt;/OrderId&gt;&#xd;
+				&lt;ReferenceId&gt;${ReferenceID}&lt;/ReferenceId&gt;&#xd;
+				&lt;Customer/&gt;&#xd;
+				&lt;StartPage&gt;1&lt;/StartPage&gt;&#xd;
+				&lt;PageSize&gt;34&lt;/PageSize&gt;&#xd;
+				&lt;VoOrderStatusList&gt;&lt;/VoOrderStatusList&gt;&#xd;
+				&lt;VoDestinationList&gt;&lt;/VoDestinationList&gt;&#xd;
+				&lt;VoPickAreaList&gt;&lt;/VoPickAreaList&gt;&#xd;
+				&lt;VoCustomerTypeList&gt;&lt;/VoCustomerTypeList&gt;&#xd;
+				&lt;VoCPSOrderFilterList&gt;&lt;/VoCPSOrderFilterList&gt;&#xd;
+			&lt;/VoPagedOrderRequest&gt;&#xd;
+			&lt;VoCPSCustomSortOrder&gt;&#xd;
+				&lt;SortType&gt;60&lt;/SortType&gt;&#xd;
+				&lt;AscDesc&gt;ASC&lt;/AscDesc&gt;&#xd;
+				&lt;SortDiv&gt;1&lt;/SortDiv&gt;&#xd;
+			&lt;/VoCPSCustomSortOrder&gt;&#xd;
+			&lt;SUCCESS&gt;True&lt;/SUCCESS&gt;&#xd;
+		&lt;/DATA&gt;&#xd;
+	&lt;/EBCPAYLOAD&gt;&#xd;
+&lt;/VoCgiBrokerIn&gt;</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">mhs${bucode}.ikeadt.com</stringProp>
+              <stringProp name="HTTPSampler.port">50569</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+              <stringProp name="HTTPSampler.path">/</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="TestPlan.comments">Dynamic values: Session ID and Reference ID, User ID</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+                <collectionProp name="Asserion.test_strings"/>
+                <stringProp name="Assertion.custom_message">&lt;OrderId&gt;${OrderID}&lt;/OrderId&gt;</stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-EbcName</stringProp>
+                  <stringProp name="Header.value">EBCJSGFCPS04</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-BsService</stringProp>
+                  <stringProp name="Header.value">BsGetCPSOrdersPaged</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">SOAPAction</stringProp>
+                  <stringProp name="Header.value">BsGetCPSOrdersPaged</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">text/xml;charset=UTF-8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <BoundaryExtractor guiclass="BoundaryExtractorGui" testclass="BoundaryExtractor" testname="Getting Order ID" enabled="false">
+              <stringProp name="BoundaryExtractor.useHeaders">false</stringProp>
+              <stringProp name="BoundaryExtractor.refname">OrderID</stringProp>
+              <stringProp name="BoundaryExtractor.lboundary">&lt;OrderId&gt;</stringProp>
+              <stringProp name="BoundaryExtractor.rboundary">&lt;/OrderId&gt;</stringProp>
+              <stringProp name="BoundaryExtractor.default">ERROR</stringProp>
+              <boolProp name="BoundaryExtractor.default_empty_value">false</boolProp>
+              <stringProp name="BoundaryExtractor.match_number">1</stringProp>
+            </BoundaryExtractor>
+            <hashTree/>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${THINK_TIME}</stringProp>
+          </TestAction>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">7000</stringProp>
+              <stringProp name="RandomTimer.range">6000</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="00_030_BsGetCPSTasks_1stCall" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">&lt;VoCgiBrokerIn&gt;&#xd;
+	&lt;ScreenId&gt;W61&lt;/ScreenId&gt;&#xd;
+	&lt;BS&gt;BsGetCPSTasks&lt;/BS&gt;&#xd;
+	&lt;EBC&gt;EBCJSGFCPS01&lt;/EBC&gt;&#xd;
+	&lt;XMLSize&gt;300000&lt;/XMLSize&gt;&#xd;
+	&lt;EbcTimeout&gt;25&lt;/EbcTimeout&gt;&#xd;
+	&lt;XSLTtransform&gt;SERVER&lt;/XSLTtransform&gt;&#xd;
+	&lt;Mode&gt;MEMORY&lt;/Mode&gt;&#xd;
+	&lt;EBCPAYLOAD&gt;&#xd;
+		&lt;DATA&gt;&#xd;
+			&lt;VoNavigation&gt;&#xd;
+				&lt;OutputScreen&gt;&lt;/OutputScreen&gt;&#xd;
+				&lt;InputScreen&gt;wCpsChooseOrder&lt;/InputScreen&gt;&#xd;
+				&lt;InfoText/&gt;&#xd;
+				&lt;UserId&gt;${UserID}&lt;/UserId&gt;&#xd;
+				&lt;LangCode&gt;GB&lt;/LangCode&gt;&#xd;
+				&lt;InfoSignal/&gt;&#xd;
+				&lt;ScreenId&gt;W61&lt;/ScreenId&gt;&#xd;
+			&lt;/VoNavigation&gt;&#xd;
+			&lt;VoCPSOrderRequest&gt;&#xd;
+				&lt;OrderId&gt;${OrderID}&lt;/OrderId&gt;&#xd;
+				&lt;Status&gt;-1&lt;/Status&gt;&#xd;
+				&lt;UserName&gt;${UserID}&lt;/UserName&gt;&#xd;
+				&lt;PrintPickList&gt;0&lt;/PrintPickList&gt;&#xd;
+			&lt;/VoCPSOrderRequest&gt;&#xd;
+			&lt;VoCPSCustomSortOrder&gt;&#xd;
+				&lt;SortType&gt;0&lt;/SortType&gt;&#xd;
+				&lt;AscDesc&gt;ASC&lt;/AscDesc&gt;&#xd;
+				&lt;SortDiv&gt;0&lt;/SortDiv&gt;&#xd;
+			&lt;/VoCPSCustomSortOrder&gt;&#xd;
+			&lt;SUCCESS&gt;True&lt;/SUCCESS&gt;&#xd;
+		&lt;/DATA&gt;&#xd;
+	&lt;/EBCPAYLOAD&gt;&#xd;
+&lt;/VoCgiBrokerIn&gt;</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">mhs${bucode}.ikeadt.com</stringProp>
+              <stringProp name="HTTPSampler.port">50595</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+              <stringProp name="HTTPSampler.path">/</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="TestPlan.comments">Dynamic value: Order ID, User ID</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-EbcName</stringProp>
+                  <stringProp name="Header.value">EBCJSGFCPS01</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-BsService</stringProp>
+                  <stringProp name="Header.value">BsGetCPSTasks</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">SOAPAction</stringProp>
+                  <stringProp name="Header.value">BsGetCPSTasks</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">text/xml;charset=UTF-8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${THINK_TIME}</stringProp>
+          </TestAction>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+              <stringProp name="RandomTimer.range">100</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+            <boolProp name="LoopController.continue_forever">true</boolProp>
+            <stringProp name="LoopController.loops">${ARTICLES_AMOUNT}</stringProp>
+          </LoopController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="00_040_BsSaveChangedPickTask" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">true</boolProp>
+            </TransactionController>
+            <hashTree>
+              <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Calculating Timestamp" enabled="true">
+                <stringProp name="scriptLanguage">python</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">from datetime import datetime
+
+timestamp = datetime.today().strftime(&apos;%Y-%m-%d %H:%M:%S.%f&apos;)
+vars.put(&apos;TIMESTAMP&apos;, timestamp)</stringProp>
+              </JSR223Sampler>
+              <hashTree/>
+              <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Building Item Body" enabled="true">
+                <stringProp name="scriptLanguage">python</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">item_xml_start = &apos;&lt;ItemId&gt;&apos;
+item_xml_middle = &apos;&lt;/ItemId&gt;&lt;PickedQty&gt;&apos;
+item_xml_end = &apos;&lt;/PickedQty&gt;&lt;ReturnedQty&gt;0&lt;/ReturnedQty&gt;&lt;PickException&gt;0&lt;/PickException&gt;&lt;SaveAction&gt;P&lt;/SaveAction&gt;&lt;LocationCode&gt;&lt;/LocationCode&gt;&lt;CreateRepTask&gt;-1&lt;/CreateRepTask&gt;&apos;
+
+item_xml_body = item_xml_start + vars.get(&apos;ArticleID_&apos; + vars.get(&apos;loop_count&apos;)) + item_xml_middle + vars.get(&apos;ArticleID_&apos; + vars.get(&apos;loop_count&apos;) + &apos;_QTY&apos;) + item_xml_end
+vars.put(&apos;Item_XML&apos;, item_xml_body)</stringProp>
+              </JSR223Sampler>
+              <hashTree/>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">&lt;VoCgiBrokerIn&gt;&#xd;
+	&lt;ScreenId&gt;W61&lt;/ScreenId&gt;&#xd;
+	&lt;VoSession&gt;&#xd;
+		&lt;SessionId&gt;${C_SessionID}&lt;/SessionId&gt;&#xd;
+		&lt;SessionUser&gt;${UserID}&lt;/SessionUser&gt;&#xd;
+		&lt;LanguageCode&gt;GB&lt;/LanguageCode&gt;&#xd;
+		&lt;VoFunctionAccessList&gt;&#xd;
+			&lt;VoFunctionAccess&gt;&#xd;
+				&lt;FunctionCode&gt;W61&lt;/FunctionCode&gt;&#xd;
+				&lt;Update&gt;Y&lt;/Update&gt;&#xd;
+				&lt;Store&gt;Y&lt;/Store&gt;&#xd;
+				&lt;Delete&gt;Y&lt;/Delete&gt;&#xd;
+				&lt;Read&gt;Y&lt;/Read&gt;&#xd;
+			&lt;/VoFunctionAccess&gt;&#xd;
+		&lt;/VoFunctionAccessList&gt;&#xd;
+	&lt;/VoSession&gt;&#xd;
+	&lt;BS&gt;BsSaveChangedPickTask&lt;/BS&gt;&#xd;
+	&lt;EBC&gt;EBCJSGFCPS01&lt;/EBC&gt;&#xd;
+	&lt;XMLSize&gt;300000&lt;/XMLSize&gt;&#xd;
+	&lt;EbcTimeout&gt;25&lt;/EbcTimeout&gt;&#xd;
+	&lt;XSLTtransform&gt;SERVER&lt;/XSLTtransform&gt;&#xd;
+	&lt;Mode&gt;MEMORY&lt;/Mode&gt;&#xd;
+	&lt;EBCPAYLOAD&gt;&#xd;
+		&lt;DATA&gt;&#xd;
+			&lt;VoNavigation&gt;&#xd;
+				&lt;OutputScreen&gt;bsReplyToXML&lt;/OutputScreen&gt;&#xd;
+				&lt;InputScreen&gt;wCpsPickItems&lt;/InputScreen&gt;&#xd;
+				&lt;InfoText/&gt;&#xd;
+				&lt;UserId&gt;${UserID}&lt;/UserId&gt;&#xd;
+				&lt;LangCode&gt;GB&lt;/LangCode&gt;&#xd;
+				&lt;InfoSignal/&gt;&#xd;
+				&lt;ScreenId&gt;W61&lt;/ScreenId&gt;&#xd;
+			&lt;/VoNavigation&gt;&#xd;
+			&lt;VoPickTaskChangeSet&gt;&#xd;
+				&lt;ChangeTimestamp&gt;${TIMESTAMP}&lt;/ChangeTimestamp&gt;&#xd;
+				&lt;VoChangedPickTaskList&gt;&#xd;
+					&lt;VoChangedPickTask&gt;&#xd;
+						&lt;OrderId&gt;${OrderID}&lt;/OrderId&gt;&#xd;
+						${Item_XML}&#xd;
+					&lt;/VoChangedPickTask&gt;&#xd;
+				&lt;/VoChangedPickTaskList&gt;&#xd;
+			&lt;/VoPickTaskChangeSet&gt;&#xd;
+			&lt;SUCCESS&gt;True&lt;/SUCCESS&gt;&#xd;
+		&lt;/DATA&gt;&#xd;
+	&lt;/EBCPAYLOAD&gt;&#xd;
+&lt;/VoCgiBrokerIn&gt;</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">mhs${bucode}.ikeadt.com</stringProp>
+                <stringProp name="HTTPSampler.port">50595</stringProp>
+                <stringProp name="HTTPSampler.protocol">http</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+                <stringProp name="HTTPSampler.path">/</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="TestPlan.comments">Dynamic values: Session ID, Timestamp, Order ID and Item ID, Quantity, User ID</stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">X-EbcName</stringProp>
+                    <stringProp name="Header.value">EBCJSGFCPS01</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">X-BsService</stringProp>
+                    <stringProp name="Header.value">BsSaveChangedPickTask</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">SOAPAction</stringProp>
+                    <stringProp name="Header.value">BsSaveChangedPickTask</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">text/xml;charset=UTF-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+                <boolProp name="displayJMeterProperties">false</boolProp>
+                <boolProp name="displayJMeterVariables">true</boolProp>
+                <boolProp name="displaySystemProperties">false</boolProp>
+              </DebugSampler>
+              <hashTree/>
+              <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+                <stringProp name="CounterConfig.start">0</stringProp>
+                <stringProp name="CounterConfig.end"></stringProp>
+                <stringProp name="CounterConfig.incr">1</stringProp>
+                <stringProp name="CounterConfig.name">loop_count</stringProp>
+                <stringProp name="CounterConfig.format"></stringProp>
+                <boolProp name="CounterConfig.per_user">true</boolProp>
+                <boolProp name="CounterConfig.reset_on_tg_iteration">true</boolProp>
+              </CounterConfig>
+              <hashTree/>
+            </hashTree>
+            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+              <intProp name="ActionProcessor.action">1</intProp>
+              <intProp name="ActionProcessor.target">0</intProp>
+              <stringProp name="ActionProcessor.duration">${THINK_TIME}</stringProp>
+            </TestAction>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+                <stringProp name="ConstantTimer.delay">1000</stringProp>
+                <stringProp name="RandomTimer.range">100</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="00_050_BsGetCPSTasks_2ndCall" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">&lt;VoCgiBrokerIn&gt;&#xd;
+	&lt;ScreenId&gt;W61&lt;/ScreenId&gt;&#xd;
+	&lt;VoSession&gt;&#xd;
+		&lt;SessionId&gt;${C_SessionID}&lt;/SessionId&gt;&#xd;
+		&lt;SessionUser&gt;${UserID}&lt;/SessionUser&gt;&#xd;
+		&lt;LanguageCode&gt;GB&lt;/LanguageCode&gt;&#xd;
+		&lt;VoFunctionAccessList&gt;&#xd;
+			&lt;VoFunctionAccess&gt;&#xd;
+				&lt;FunctionCode&gt;W61&lt;/FunctionCode&gt;&#xd;
+				&lt;Update&gt;Y&lt;/Update&gt;&#xd;
+				&lt;Store&gt;Y&lt;/Store&gt;&#xd;
+				&lt;Delete&gt;Y&lt;/Delete&gt;&#xd;
+				&lt;Read&gt;Y&lt;/Read&gt;&#xd;
+			&lt;/VoFunctionAccess&gt;&#xd;
+		&lt;/VoFunctionAccessList&gt;&#xd;
+	&lt;/VoSession&gt;&#xd;
+	&lt;BS&gt;BsGetCPSTasks&lt;/BS&gt;&#xd;
+	&lt;EBC&gt;EBCJSGFCPS01&lt;/EBC&gt;&#xd;
+	&lt;XMLSize&gt;300000&lt;/XMLSize&gt;&#xd;
+	&lt;EbcTimeout&gt;25&lt;/EbcTimeout&gt;&#xd;
+	&lt;XSLTtransform&gt;SERVER&lt;/XSLTtransform&gt;&#xd;
+	&lt;Mode&gt;MEMORY&lt;/Mode&gt;&#xd;
+	&lt;EBCPAYLOAD&gt;&#xd;
+		&lt;DATA&gt;&#xd;
+			&lt;VoNavigation&gt;&#xd;
+				&lt;OutputScreen&gt;&lt;/OutputScreen&gt;&#xd;
+				&lt;InputScreen&gt;wCpsPickItems&lt;/InputScreen&gt;&#xd;
+				&lt;InfoText/&gt;&#xd;
+				&lt;UserId&gt;${UserID}&lt;/UserId&gt;&#xd;
+				&lt;LangCode&gt;GB&lt;/LangCode&gt;&#xd;
+				&lt;InfoSignal/&gt;&#xd;
+				&lt;ScreenId&gt;W61&lt;/ScreenId&gt;&#xd;
+			&lt;/VoNavigation&gt;&#xd;
+			&lt;VoCPSOrderInfo&gt;&#xd;
+				&lt;OrderId&gt;${OrderID}&lt;/OrderId&gt;&#xd;
+				&lt;OrderMergeId&gt;0&lt;/OrderMergeId&gt;&#xd;
+				&lt;Status&gt;-1&lt;/Status&gt;&#xd;
+				&lt;UserName&gt;${UserID}&lt;/UserName&gt;&#xd;
+				&lt;CreateTime/&gt;&#xd;
+				&lt;AllPicked&gt;0&lt;/AllPicked&gt;&#xd;
+				&lt;PickupLoc&gt;Customer+1&lt;/PickupLoc&gt;&#xd;
+				&lt;InHistTable/&gt;&#xd;
+				&lt;SortType&gt;0&lt;/SortType&gt;&#xd;
+				&lt;Destination&gt;-1&lt;/Destination&gt;&#xd;
+				&lt;PickArea&gt;-1&lt;/PickArea&gt;&#xd;
+				&lt;StorageStatus&gt;-1&lt;/StorageStatus&gt;&#xd;
+			&lt;/VoCPSOrderInfo&gt;&#xd;
+			&lt;VoCPSOrderRequest&gt;&#xd;
+				&lt;OrderId&gt;${OrderID}&lt;/OrderId&gt;&#xd;
+				&lt;UserName&gt;${UserID}&lt;/UserName&gt;&#xd;
+				&lt;Status&gt;-1&lt;/Status&gt;&#xd;
+			&lt;/VoCPSOrderRequest&gt;&#xd;
+			&lt;VoCPSOrderHead&gt;&#xd;
+				&lt;OrderId&gt;${OrderID}&lt;/OrderId&gt;&#xd;
+				&lt;Status&gt;-1&lt;/Status&gt;&#xd;
+				&lt;Priority&gt;-1&lt;/Priority&gt;&#xd;
+				&lt;UserName&gt;${UserID}&lt;/UserName&gt;&#xd;
+				&lt;PickupLoc&gt;-999999&lt;/PickupLoc&gt;&#xd;
+				&lt;Destination&gt;-1&lt;/Destination&gt;&#xd;
+				&lt;CanceliSellOrder&gt;false&lt;/CanceliSellOrder&gt;&#xd;
+				&lt;CheckedNotPerformedReason&gt;-1&lt;/CheckedNotPerformedReason&gt;&#xd;
+				&lt;CancelReason&gt;0&lt;/CancelReason&gt;&#xd;
+			&lt;/VoCPSOrderHead&gt;&#xd;
+			&lt;VoCPSCustomSortOrder&gt;&#xd;
+				&lt;SortType&gt;1&lt;/SortType&gt;&#xd;
+				&lt;AscDesc&gt;ascending&lt;/AscDesc&gt;&#xd;
+				&lt;SortDiv&gt;0&lt;/SortDiv&gt;&#xd;
+			&lt;/VoCPSCustomSortOrder&gt;&#xd;
+			&lt;SUCCESS&gt;True&lt;/SUCCESS&gt;&#xd;
+		&lt;/DATA&gt;&#xd;
+	&lt;/EBCPAYLOAD&gt;&#xd;
+&lt;/VoCgiBrokerIn&gt;</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">mhs${bucode}.ikeadt.com</stringProp>
+              <stringProp name="HTTPSampler.port">50595</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+              <stringProp name="HTTPSampler.path">/</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="TestPlan.comments">Dynamic value: Session ID and Order ID, User ID</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-EbcName</stringProp>
+                  <stringProp name="Header.value">EBCJSGFCPS01</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-BsService</stringProp>
+                  <stringProp name="Header.value">BsGetCPSTasks</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">SOAPAction</stringProp>
+                  <stringProp name="Header.value">BsGetCPSTasks</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">text/xml;charset=UTF-8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${THINK_TIME}</stringProp>
+          </TestAction>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+              <stringProp name="RandomTimer.range">100</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="00_060_BsSetCPSOrderStatus_1stCall" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">&lt;VoCgiBrokerIn&gt;&#xd;
+	&lt;ScreenId&gt;W61&lt;/ScreenId&gt;&#xd;
+	&lt;VoSession&gt;&#xd;
+		&lt;SessionId&gt;${C_SessionID}&lt;/SessionId&gt;&#xd;
+		&lt;SessionUser&gt;${UserID}&lt;/SessionUser&gt;&#xd;
+		&lt;LanguageCode&gt;GB&lt;/LanguageCode&gt;&#xd;
+		&lt;VoFunctionAccessList&gt;&#xd;
+			&lt;VoFunctionAccess&gt;&#xd;
+				&lt;FunctionCode&gt;W61&lt;/FunctionCode&gt;&#xd;
+				&lt;Update&gt;Y&lt;/Update&gt;&#xd;
+				&lt;Store&gt;Y&lt;/Store&gt;&#xd;
+				&lt;Delete&gt;Y&lt;/Delete&gt;&#xd;
+				&lt;Read&gt;Y&lt;/Read&gt;&#xd;
+			&lt;/VoFunctionAccess&gt;&#xd;
+		&lt;/VoFunctionAccessList&gt;&#xd;
+	&lt;/VoSession&gt;&#xd;
+	&lt;BS&gt;BsSetCPSOrderStatus&lt;/BS&gt;&#xd;
+	&lt;EBC&gt;EBCJSGFCPS01&lt;/EBC&gt;&#xd;
+	&lt;XMLSize&gt;300000&lt;/XMLSize&gt;&#xd;
+	&lt;EbcTimeout&gt;1000&lt;/EbcTimeout&gt;&#xd;
+	&lt;XSLTtransform&gt;SERVER&lt;/XSLTtransform&gt;&#xd;
+	&lt;Mode&gt;MEMORY&lt;/Mode&gt;&#xd;
+	&lt;EBCPAYLOAD&gt;&#xd;
+		&lt;DATA&gt;&#xd;
+			&lt;VoNavigation&gt;&#xd;
+				&lt;OutputScreen&gt;&lt;/OutputScreen&gt;&#xd;
+				&lt;InputScreen&gt;wCpsPickItems&lt;/InputScreen&gt;&#xd;
+				&lt;InfoText/&gt;&#xd;
+				&lt;UserId&gt;${UserID}&lt;/UserId&gt;&#xd;
+				&lt;LangCode&gt;GB&lt;/LangCode&gt;&#xd;
+				&lt;InfoSignal/&gt;&#xd;
+				&lt;ScreenId&gt;W61&lt;/ScreenId&gt;&#xd;
+			&lt;/VoNavigation&gt;&#xd;
+			&lt;VoCPSOrderHead&gt;&#xd;
+				&lt;OrderId&gt;${OrderID}&lt;/OrderId&gt;&#xd;
+				&lt;Status&gt;3&lt;/Status&gt;&#xd;
+				&lt;Priority&gt;-1&lt;/Priority&gt;&#xd;
+				&lt;UserName&gt;HELP&lt;/UserName&gt;&#xd;
+				&lt;PickupLoc&gt;-999999&lt;/PickupLoc&gt;&#xd;
+				&lt;Destination&gt;-1&lt;/Destination&gt;&#xd;
+				&lt;CanceliSellOrder&gt;false&lt;/CanceliSellOrder&gt;&#xd;
+				&lt;CheckedNotPerformedReason&gt;-1&lt;/CheckedNotPerformedReason&gt;&#xd;
+				&lt;CancelReason&gt;0&lt;/CancelReason&gt;&#xd;
+				&lt;ScreenId&gt;W61&lt;/ScreenId&gt;&#xd;
+			&lt;/VoCPSOrderHead&gt;&#xd;
+			&lt;SUCCESS&gt;True&lt;/SUCCESS&gt;&#xd;
+		&lt;/DATA&gt;&#xd;
+	&lt;/EBCPAYLOAD&gt;&#xd;
+&lt;/VoCgiBrokerIn&gt;</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">mhs${bucode}.ikeadt.com</stringProp>
+              <stringProp name="HTTPSampler.port">50595</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+              <stringProp name="HTTPSampler.path">/</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="TestPlan.comments">Dynamic values: Session ID and Order ID, User ID</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-EbcName</stringProp>
+                  <stringProp name="Header.value">EBCJSGFCPS01</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-BsService</stringProp>
+                  <stringProp name="Header.value">BsSetCPSOrderStatus</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">SOAPAction</stringProp>
+                  <stringProp name="Header.value">BsSetCPSOrderStatus</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">text/xml;charset=UTF-8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${THINK_TIME}</stringProp>
+          </TestAction>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+              <stringProp name="RandomTimer.range">100</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="00_070_BsSetCPSOrderStatus_2ndCall" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">&lt;VoCgiBrokerIn&gt;&#xd;
+	&lt;ScreenId&gt;W61&lt;/ScreenId&gt;&#xd;
+	&lt;BS&gt;BsSetCPSOrderStatus&lt;/BS&gt;&#xd;
+	&lt;EBC&gt;EBCJSGFCPS01&lt;/EBC&gt;&#xd;
+	&lt;XMLSize&gt;300000&lt;/XMLSize&gt;&#xd;
+	&lt;EbcTimeout&gt;1000&lt;/EbcTimeout&gt;&#xd;
+	&lt;XSLTtransform&gt;SERVER&lt;/XSLTtransform&gt;&#xd;
+	&lt;Mode&gt;MEMORY&lt;/Mode&gt;&#xd;
+	&lt;EBCPAYLOAD&gt;&#xd;
+		&lt;DATA&gt;&#xd;
+			&lt;VoNavigation&gt;&#xd;
+				&lt;OutputScreen&gt;&lt;/OutputScreen&gt;&#xd;
+				&lt;InputScreen&gt;wCpsCloseOrder&lt;/InputScreen&gt;&#xd;
+				&lt;InfoText/&gt;&#xd;
+				&lt;UserId&gt;${UserID}&lt;/UserId&gt;&#xd;
+				&lt;LangCode&gt;GB&lt;/LangCode&gt;&#xd;
+				&lt;InfoSignal/&gt;&#xd;
+				&lt;ScreenId&gt;W61&lt;/ScreenId&gt;&#xd;
+			&lt;/VoNavigation&gt;&#xd;
+			&lt;VoCPSOrderHead&gt;&#xd;
+				&lt;OrderId&gt;${OrderID}&lt;/OrderId&gt;&#xd;
+				&lt;OrderSource&gt;ISOM&lt;/OrderSource&gt;&#xd;
+				&lt;Status&gt;4&lt;/Status&gt;&#xd;
+				&lt;Priority&gt;-1&lt;/Priority&gt;&#xd;
+				&lt;UserName&gt;${UserID}&lt;/UserName&gt;&#xd;
+				&lt;PickupLoc&gt;Test&lt;/PickupLoc&gt;&#xd;
+				&lt;Destination&gt;-1&lt;/Destination&gt;&#xd;
+				&lt;CanceliSellOrder&gt;FALSE&lt;/CanceliSellOrder&gt;&#xd;
+				&lt;CheckedNotPerformedReason&gt;-1&lt;/CheckedNotPerformedReason&gt;&#xd;
+				&lt;CancelReason&gt;0&lt;/CancelReason&gt;&#xd;
+				&lt;ScreenId&gt;W61&lt;/ScreenId&gt;&#xd;
+			&lt;/VoCPSOrderHead&gt;&#xd;
+			&lt;VoCPSOrderRequest&gt;&#xd;
+				&lt;OrderId&gt;${OrderID}&lt;/OrderId&gt;&#xd;
+				&lt;Status&gt;-1&lt;/Status&gt;&#xd;
+				&lt;UserName&gt;${UserID}&lt;/UserName&gt;&#xd;
+			&lt;/VoCPSOrderRequest&gt;&#xd;
+			&lt;SUCCESS&gt;True&lt;/SUCCESS&gt;&#xd;
+		&lt;/DATA&gt;&#xd;
+	&lt;/EBCPAYLOAD&gt;&#xd;
+&lt;/VoCgiBrokerIn&gt;</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">mhs${bucode}.ikeadt.com</stringProp>
+              <stringProp name="HTTPSampler.port">50595</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+              <stringProp name="HTTPSampler.path">/</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="TestPlan.comments">Dynamic values: Order ID, User ID</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-EbcName</stringProp>
+                  <stringProp name="Header.value">EBCJSGFCPS01</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-BsService</stringProp>
+                  <stringProp name="Header.value">BsSetCPSOrderStatus</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">SOAPAction</stringProp>
+                  <stringProp name="Header.value">BsSetCPSOrderStatus</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">text/xml;charset=UTF-8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${THINK_TIME}</stringProp>
+          </TestAction>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+              <stringProp name="RandomTimer.range">100</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="00_080_BsGetCPSOrdersPaged_2ndCall" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">&lt;VoCgiBrokerIn&gt;&#xd;
+	&lt;ScreenId&gt;O23&lt;/ScreenId&gt;&#xd;
+	&lt;VoSession&gt;&#xd;
+		&lt;SessionId&gt;${C_SessionID}&lt;/SessionId&gt;&#xd;
+		&lt;SessionUser&gt;${UserID}&lt;/SessionUser&gt;&#xd;
+		&lt;LanguageCode&gt;GB&lt;/LanguageCode&gt;&#xd;
+		&lt;VoFunctionAccessList&gt;&#xd;
+			&lt;VoFunctionAccess&gt;&#xd;
+				&lt;FunctionCode&gt;O23&lt;/FunctionCode&gt;&#xd;
+				&lt;Update&gt;Y&lt;/Update&gt;&#xd;
+				&lt;Store&gt;Y&lt;/Store&gt;&#xd;
+				&lt;Delete&gt;Y&lt;/Delete&gt;&#xd;
+				&lt;Read&gt;Y&lt;/Read&gt;&#xd;
+			&lt;/VoFunctionAccess&gt;&#xd;
+		&lt;/VoFunctionAccessList&gt;&#xd;
+	&lt;/VoSession&gt;&#xd;
+	&lt;BS&gt;BsGetCPSOrdersPaged&lt;/BS&gt;&#xd;
+	&lt;EBC&gt;EBCJSGFCPS04&lt;/EBC&gt;&#xd;
+	&lt;XMLSize&gt;300000&lt;/XMLSize&gt;&#xd;
+	&lt;EbcTimeout&gt;1000&lt;/EbcTimeout&gt;&#xd;
+	&lt;XSLTtransform&gt;CLIENT&lt;/XSLTtransform&gt;&#xd;
+	&lt;Mode&gt;MEMORY&lt;/Mode&gt;&#xd;
+	&lt;EBCPAYLOAD&gt;&#xd;
+		&lt;DATA&gt;&#xd;
+			&lt;VoNavigation&gt;&#xd;
+				&lt;OutputScreen&gt;o2CpsHandOrderList&lt;/OutputScreen&gt;&#xd;
+				&lt;InputScreen&gt;o2CpsHandMain&lt;/InputScreen&gt;&#xd;
+				&lt;InfoText/&gt;&#xd;
+				&lt;UserId&gt;${UserID}&lt;/UserId&gt;&#xd;
+				&lt;LangCode&gt;GB&lt;/LangCode&gt;&#xd;
+				&lt;InfoSignal/&gt;&#xd;
+			&lt;/VoNavigation&gt;&#xd;
+			&lt;VoPagedOrderRequest&gt;&#xd;
+				&lt;SearchType&gt;P&lt;/SearchType&gt;&#xd;
+				&lt;OrderId&gt;${OrderID}&lt;/OrderId&gt;&#xd;
+				&lt;ReferenceId/&gt;&#xd;
+				&lt;Customer/&gt;&#xd;
+				&lt;StartPage&gt;1&lt;/StartPage&gt;&#xd;
+				&lt;PageSize&gt;34&lt;/PageSize&gt;&#xd;
+				&lt;VoOrderStatusList&gt;&lt;/VoOrderStatusList&gt;&#xd;
+				&lt;VoDestinationList&gt;&lt;/VoDestinationList&gt;&#xd;
+				&lt;VoPickAreaList&gt;&lt;/VoPickAreaList&gt;&#xd;
+				&lt;VoCPSOrderFilterList&gt;&lt;/VoCPSOrderFilterList&gt;&#xd;
+			&lt;/VoPagedOrderRequest&gt;&#xd;
+			&lt;VoCPSCustomSortOrder&gt;&#xd;
+				&lt;SortType&gt;60&lt;/SortType&gt;&#xd;
+				&lt;AscDesc&gt;ASC&lt;/AscDesc&gt;&#xd;
+				&lt;SortDiv&gt;1&lt;/SortDiv&gt;&#xd;
+			&lt;/VoCPSCustomSortOrder&gt;&#xd;
+			&lt;SUCCESS&gt;True&lt;/SUCCESS&gt;&#xd;
+		&lt;/DATA&gt;&#xd;
+	&lt;/EBCPAYLOAD&gt;&#xd;
+&lt;/VoCgiBrokerIn&gt;</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">mhs${bucode}.ikeadt.com</stringProp>
+              <stringProp name="HTTPSampler.port">50569</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+              <stringProp name="HTTPSampler.path">/</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="TestPlan.comments">Dynamic values: Session ID and Order ID, User ID</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-EbcName</stringProp>
+                  <stringProp name="Header.value">EBCJSGFCPS04</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-BsService</stringProp>
+                  <stringProp name="Header.value">BsGetCPSOrdersPaged</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">SOAPAction</stringProp>
+                  <stringProp name="Header.value">BsGetCPSOrdersPaged</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">text/xml;charset=UTF-8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${THINK_TIME}</stringProp>
+          </TestAction>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+              <stringProp name="RandomTimer.range">100</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="false">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end"></stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+        </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="false">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree Failed" enabled="false">
+          <boolProp name="ResultCollector.error_logging">true</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+          <longProp name="interval_grouping">1000</longProp>
+          <boolProp name="graph_aggregated">false</boolProp>
+          <stringProp name="include_sample_labels"></stringProp>
+          <stringProp name="exclude_sample_labels"></stringProp>
+          <stringProp name="start_offset"></stringProp>
+          <stringProp name="end_offset"></stringProp>
+          <boolProp name="include_checkbox_state">false</boolProp>
+          <boolProp name="exclude_checkbox_state">false</boolProp>
+        </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+        <hashTree/>
+        <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Response Times Over Time" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+          <longProp name="interval_grouping">500</longProp>
+          <boolProp name="graph_aggregated">false</boolProp>
+          <stringProp name="include_sample_labels"></stringProp>
+          <stringProp name="exclude_sample_labels"></stringProp>
+          <stringProp name="start_offset"></stringProp>
+          <stringProp name="end_offset"></stringProp>
+          <boolProp name="include_checkbox_state">false</boolProp>
+          <boolProp name="exclude_checkbox_state">false</boolProp>
+        </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+        <hashTree/>
+        <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ThreadsStateOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Active Threads Over Time" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+          <longProp name="interval_grouping">500</longProp>
+          <boolProp name="graph_aggregated">false</boolProp>
+          <stringProp name="include_sample_labels"></stringProp>
+          <stringProp name="exclude_sample_labels"></stringProp>
+          <stringProp name="start_offset"></stringProp>
+          <stringProp name="end_offset"></stringProp>
+          <boolProp name="include_checkbox_state">false</boolProp>
+          <boolProp name="exclude_checkbox_state">false</boolProp>
+        </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">whatever.txt</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TEST" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Getting Reference ID and Article IDs" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">C:/apache-jmeter-5.4.1/orders.csv</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">ReferenceID,ArticlesID</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Getting User IDs" enabled="true">
+          <stringProp name="filename">C:/apache-jmeter-5.4.1/UserID_OrderCreation.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">UserID</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Getting Quantities" enabled="true">
+          <stringProp name="filename">C:/apache-jmeter-5.4.1/quantities.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">Quantities</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Extracting Article IDs" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">articles_id = vars.get(&apos;ArticlesID&apos;).split(&apos;;&apos;)
+vars.put(&apos;ARTICLES_AMOUNT&apos;, str(len(articles_id)))
+for idx, article_id in enumerate(articles_id):
+	vars.put(&apos;ArticleID_&apos; + str(idx), article_id)</stringProp>
+          <stringProp name="scriptLanguage">python</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Calculating Think Time" enabled="true">
+          <stringProp name="scriptLanguage">python</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import random
+
+vars.put(&apos;THINK_TIME&apos;, str(random.randint(7000, 13001)))</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Extracting Quantities" enabled="true">
+          <stringProp name="scriptLanguage">python</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">quantities = vars.get(&apos;Quantities&apos;).split(&apos;;&apos;)
+
+for idx, qty in enumerate(quantities):
+	vars.put(&apos;ArticleID_&apos; + str(idx) + &apos;_QTY&apos;, qty)</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="BsSaveChangedPickTask" enabled="true"/>
+        <hashTree>
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+            <boolProp name="LoopController.continue_forever">true</boolProp>
+            <stringProp name="LoopController.loops">${ARTICLES_AMOUNT}</stringProp>
+          </LoopController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Calculating Timestamp" enabled="true">
+              <stringProp name="scriptLanguage">python</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">from datetime import datetime
+
+timestamp = datetime.today().strftime(&apos;%Y-%m-%d %H:%M:%S.%f&apos;)
+vars.put(&apos;TIMESTAMP&apos;, timestamp)</stringProp>
+            </JSR223Sampler>
+            <hashTree/>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Building Item Body" enabled="true">
+              <stringProp name="scriptLanguage">python</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">item_xml_start = &apos;&lt;ItemId&gt;&apos;
+item_xml_middle = &apos;&lt;/ItemId&gt;&lt;PickedQty&gt;&apos;
+item_xml_end = &apos;&lt;/PickedQty&gt;&lt;ReturnedQty&gt;0&lt;/ReturnedQty&gt;&lt;PickException&gt;0&lt;/PickException&gt;&lt;SaveAction&gt;P&lt;/SaveAction&gt;&lt;LocationCode&gt;&lt;/LocationCode&gt;&lt;CreateRepTask&gt;-1&lt;/CreateRepTask&gt;&apos;
+
+item_xml_body = item_xml_start + vars.get(&apos;ArticleID_&apos; + vars.get(&apos;loop_count&apos;)) + item_xml_middle + vars.get(&apos;ArticleID_&apos; + vars.get(&apos;loop_count&apos;) + &apos;_QTY&apos;) + item_xml_end
+vars.put(&apos;Item_XML&apos;, item_xml_body)</stringProp>
+            </JSR223Sampler>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">&lt;VoCgiBrokerIn&gt;&#xd;
+	&lt;ScreenId&gt;W61&lt;/ScreenId&gt;&#xd;
+	&lt;VoSession&gt;&#xd;
+		&lt;SessionId&gt;1&lt;/SessionId&gt;&#xd;
+		&lt;SessionUser&gt;${UserID}&lt;/SessionUser&gt;&#xd;
+		&lt;LanguageCode&gt;GB&lt;/LanguageCode&gt;&#xd;
+		&lt;VoFunctionAccessList&gt;&#xd;
+			&lt;VoFunctionAccess&gt;&#xd;
+				&lt;FunctionCode&gt;W61&lt;/FunctionCode&gt;&#xd;
+				&lt;Update&gt;Y&lt;/Update&gt;&#xd;
+				&lt;Store&gt;Y&lt;/Store&gt;&#xd;
+				&lt;Delete&gt;Y&lt;/Delete&gt;&#xd;
+				&lt;Read&gt;Y&lt;/Read&gt;&#xd;
+			&lt;/VoFunctionAccess&gt;&#xd;
+		&lt;/VoFunctionAccessList&gt;&#xd;
+	&lt;/VoSession&gt;&#xd;
+	&lt;BS&gt;BsSaveChangedPickTask&lt;/BS&gt;&#xd;
+	&lt;EBC&gt;EBCJSGFCPS01&lt;/EBC&gt;&#xd;
+	&lt;XMLSize&gt;300000&lt;/XMLSize&gt;&#xd;
+	&lt;EbcTimeout&gt;25&lt;/EbcTimeout&gt;&#xd;
+	&lt;XSLTtransform&gt;SERVER&lt;/XSLTtransform&gt;&#xd;
+	&lt;Mode&gt;MEMORY&lt;/Mode&gt;&#xd;
+	&lt;EBCPAYLOAD&gt;&#xd;
+		&lt;DATA&gt;&#xd;
+			&lt;VoNavigation&gt;&#xd;
+				&lt;OutputScreen&gt;bsReplyToXML&lt;/OutputScreen&gt;&#xd;
+				&lt;InputScreen&gt;wCpsPickItems&lt;/InputScreen&gt;&#xd;
+				&lt;InfoText/&gt;&#xd;
+				&lt;UserId&gt;${UserID}&lt;/UserId&gt;&#xd;
+				&lt;LangCode&gt;GB&lt;/LangCode&gt;&#xd;
+				&lt;InfoSignal/&gt;&#xd;
+				&lt;ScreenId&gt;W61&lt;/ScreenId&gt;&#xd;
+			&lt;/VoNavigation&gt;&#xd;
+			&lt;VoPickTaskChangeSet&gt;&#xd;
+				&lt;ChangeTimestamp&gt;${TIMESTAMP}&lt;/ChangeTimestamp&gt;&#xd;
+				&lt;VoChangedPickTaskList&gt;&#xd;
+					&lt;VoChangedPickTask&gt;&#xd;
+						&lt;OrderId&gt;2&lt;/OrderId&gt;&#xd;
+						${Item_XML}&#xd;
+					&lt;/VoChangedPickTask&gt;&#xd;
+				&lt;/VoChangedPickTaskList&gt;&#xd;
+			&lt;/VoPickTaskChangeSet&gt;&#xd;
+			&lt;SUCCESS&gt;True&lt;/SUCCESS&gt;&#xd;
+		&lt;/DATA&gt;&#xd;
+	&lt;/EBCPAYLOAD&gt;&#xd;
+&lt;/VoCgiBrokerIn&gt;</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">foobar.com</stringProp>
+              <stringProp name="HTTPSampler.port">80</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+              <stringProp name="HTTPSampler.path">/</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="TestPlan.comments">Dynamic values: Session ID, Timestamp, Order ID and Item ID, Quantity, User ID</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-EbcName</stringProp>
+                  <stringProp name="Header.value">EBCJSGFCPS01</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-BsService</stringProp>
+                  <stringProp name="Header.value">BsSaveChangedPickTask</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">SOAPAction</stringProp>
+                  <stringProp name="Header.value">BsSaveChangedPickTask</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">text/xml;charset=UTF-8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+              <stringProp name="CounterConfig.start">0</stringProp>
+              <stringProp name="CounterConfig.end"></stringProp>
+              <stringProp name="CounterConfig.incr">1</stringProp>
+              <stringProp name="CounterConfig.name">loop_count</stringProp>
+              <stringProp name="CounterConfig.format"></stringProp>
+              <boolProp name="CounterConfig.per_user">false</boolProp>
+            </CounterConfig>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

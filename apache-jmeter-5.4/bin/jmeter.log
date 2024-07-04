@@ -1,0 +1,48 @@
+2024-07-03 11:25:06,642 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2024-07-03 11:25:06,707 INFO o.a.j.JMeter: Loading user properties from: user.properties
+2024-07-03 11:25:06,709 INFO o.a.j.JMeter: Loading system properties from: system.properties
+2024-07-03 11:25:06,727 INFO o.a.j.JMeter: Copyright (c) 1998-2020 The Apache Software Foundation
+2024-07-03 11:25:06,727 INFO o.a.j.JMeter: Version 5.4
+2024-07-03 11:25:06,727 INFO o.a.j.JMeter: java.version=11.0.11
+2024-07-03 11:25:06,728 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2024-07-03 11:25:06,728 INFO o.a.j.JMeter: os.name=Windows 10
+2024-07-03 11:25:06,728 INFO o.a.j.JMeter: os.arch=amd64
+2024-07-03 11:25:06,728 INFO o.a.j.JMeter: os.version=10.0
+2024-07-03 11:25:06,729 INFO o.a.j.JMeter: file.encoding=Cp1252
+2024-07-03 11:25:06,730 INFO o.a.j.JMeter: java.awt.headless=null
+2024-07-03 11:25:06,730 INFO o.a.j.JMeter: Max memory     =1073741824
+2024-07-03 11:25:06,730 INFO o.a.j.JMeter: Available Processors =8
+2024-07-03 11:25:06,757 INFO o.a.j.JMeter: Default Locale=English (EN)
+2024-07-03 11:25:06,758 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2024-07-03 11:25:06,758 INFO o.a.j.JMeter: JMeterHome=C:\apache-jmeter-5.4
+2024-07-03 11:25:06,758 INFO o.a.j.JMeter: user.dir  =C:\apache-jmeter-5.4\bin
+2024-07-03 11:25:06,759 INFO o.a.j.JMeter: PWD       =C:\apache-jmeter-5.4\bin
+2024-07-03 11:25:06,766 INFO o.a.j.JMeter: IP: 192.168.10.249 Name: lnor061597 FullName: lnor061597.corp.capgemini.com
+2024-07-03 11:25:07,200 INFO o.a.j.JMeter: Setting LAF to: laf:com.sun.java.swing.plaf.windows.WindowsLookAndFeel
+2024-07-03 11:25:07,632 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2024-07-03 11:25:12,305 INFO o.j.r.JARSourceHTTP: Requesting https://jmeter-plugins.org/repo/?installID=windows_10-f8c4a4c62c15f71fcb694a0bbd52181a-gui
+2024-07-03 11:25:15,842 INFO o.j.r.PluginManager: Plugins Status: [jpgc-graphs-basic=2.0, jpgc-casutg=2.10, jpgc-fifo=0.2, jpgc-plugins-manager=0.0.0-STOCK, jmeter-core=5.4, jmeter-ftp=5.4, jmeter-http=5.4, jmeter-jdbc=5.4, jmeter-jms=5.4, jmeter-junit=5.4, jmeter-java=5.4, jmeter-ldap=5.4, jmeter-mail=5.4, jmeter-mongodb=5.4, jmeter-native=5.4, jmeter-tcp=5.4, jmeter-components=5.4]
+2024-07-03 11:25:15,847 INFO o.j.r.PluginManagerMenuItem: Plugins Manager has upgrades: [jpgc-plugins-manager]
+2024-07-03 11:25:28,553 INFO o.a.j.s.FileServer: Default base='C:\apache-jmeter-5.4\bin'
+2024-07-03 11:25:28,559 INFO o.a.j.g.a.Load: Loading file: C:\Users\vramiset\OneDrive - Capgemini\Desktop\APPITesting.jmx
+2024-07-03 11:25:28,560 INFO o.a.j.s.FileServer: Set new base='C:\Users\vramiset\OneDrive - Capgemini\Desktop'
+2024-07-03 11:25:28,932 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2024-07-03 11:25:28,954 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2024-07-03 11:25:28,957 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2024-07-03 11:25:28,961 INFO o.a.j.s.SaveService: Loading file: C:\Users\vramiset\OneDrive - Capgemini\Desktop\APPITesting.jmx
+2024-07-03 11:25:29,257 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2024-07-03 11:25:29,258 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2024-07-03 11:25:29,258 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2024-07-03 11:25:29,259 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2024-07-03 11:25:29,259 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2024-07-03 11:25:29,259 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2024-07-03 11:25:29,494 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2024-07-03 11:25:29,494 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to ISO-8859-1
+2024-07-03 11:25:29,494 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2024-07-03 11:25:29,494 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2024-07-03 11:25:29,906 INFO o.a.j.v.ViewResultsFullVisualizer: Add JavaFX to your Java installation if you want to use renderer: org.apache.jmeter.visualizers.RenderInBrowser
+2024-07-03 11:25:30,114 INFO o.a.j.v.ViewResultsFullVisualizer: Add JavaFX to your Java installation if you want to use renderer: org.apache.jmeter.visualizers.RenderInBrowser
+2024-07-03 11:25:30,283 INFO o.a.j.v.ViewResultsFullVisualizer: Add JavaFX to your Java installation if you want to use renderer: org.apache.jmeter.visualizers.RenderInBrowser
+2024-07-03 11:25:30,409 INFO o.a.j.v.ViewResultsFullVisualizer: Add JavaFX to your Java installation if you want to use renderer: org.apache.jmeter.visualizers.RenderInBrowser
+2024-07-03 11:25:30,523 INFO o.a.j.v.ViewResultsFullVisualizer: Add JavaFX to your Java installation if you want to use renderer: org.apache.jmeter.visualizers.RenderInBrowser
+2024-07-03 11:25:30,605 INFO o.a.j.s.FileServer: Set new base='C:\Users\vramiset\OneDrive - Capgemini\Desktop'
